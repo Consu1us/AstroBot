@@ -17,17 +17,17 @@ const client = new Discord.Client({
     partials: [
         Discord.Partials.Channel,
         Discord.Partials.Message
-    ]
+    ],
+    presence: {
+        activities: [{name: 'Stargazing', type: ActivityType.Custom }],
+        status: 'online'
+    }
 });
 
 const token = process.env.BOT_TOKEN;
 client.login(token);
 client.on('ready', async () => {
     console.log(`Client logged into: ${client.user.username}`);
-    client.user.setPresence({ 
-        activities: [{ name: 'Stargazing', type: ActivityType.Custom }], 
-        status: 'online' 
-    });
 });
 
 client.commands = new Collection();
